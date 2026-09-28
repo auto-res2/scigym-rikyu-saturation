@@ -20,6 +20,7 @@ from scigym.controller import Controller  # noqa: E402
 
 BUDGET_EXCEEDED = 42  # 予算超過（HTTP 402）。RIKYU では起きない想定だが main.py は run 全体を止める
 CONTEXT_OVERFLOW = 43  # 会話が文脈長を超えた。main.py はやり直さず「提出に至らなかった件」として数える
+MAX_RETRIES = 360  # 5xx や接続断は 60 秒おきに最大 6 時間呼び直す。推論 API は数時間止まることがあり、試行を落とすと反復が無駄になる
 CONTEXT_WINDOW = 262144  # 5 モデル共通の上限（qwen3.6-35b / qwen3.8-27b / kimi-k2.6 の max_input_tokens）
 
 
@@ -41,7 +42,7 @@ class OpenAICompatible(LLM):
     def get_response(self, user_message):
         self.add_message("user", user_message)
         max_tokens = self.max_length
-        for attempt in range(30):
+        for attempt in range(MAX_RETRIES):
             try:
                 response = self.client.chat.completions.create(
                     model=self.model_name,
@@ -50,7 +51,7 @@ class OpenAICompatible(LLM):
                     temperature=self.temperature,
                 )
             except (openai.APIConnectionError, openai.APITimeoutError) as exc:
-                if attempt == 29:
+                if attempt == MAX_RETRIES - 1:
                     raise
                 print(f"connection error ({type(exc).__name__}); retry {attempt + 1} after 60s", flush=True)
                 time.sleep(60)
@@ -61,7 +62,7 @@ class OpenAICompatible(LLM):
                 if exc.status_code == 400 and any(w in str(exc).lower() for w in ("context", "maximum", "too long", "max_tokens")):
                     print(f"context overflow after {len(self.messages)} messages: {exc}", flush=True)
                     sys.exit(CONTEXT_OVERFLOW)
-                if exc.status_code < 500 or attempt == 29:
+                if exc.status_code < 500 or attempt == MAX_RETRIES - 1:
                     raise
                 print(f"gateway {exc.status_code}; retry {attempt + 1} after 60s", flush=True)  # 上流の一時的な不調は待って呼び直す
                 time.sleep(60)

@@ -34,37 +34,108 @@
         {
           "id": "s1.p2",
           "node_type": "setup",
-          "quote": "Due to computational resource constraints, we restricted our evaluation to SCIGYM-small, with a total of 137 tasks."
+          "quote": "Due to computational resource constraints, we restricted our evaluation to SCIGYM-small, with a total of 137 tasks.",
+          "judgments": [
+            {
+              "text_sha256": "359ab651e6ea252d8f13c1c6989ab8896514599c3b00502a9e8f23be6da39823",
+              "model": "gpt-4.1",
+              "supported": true
+            },
+            {
+              "text_sha256": "aecb053d85ca25cdfc5f46327e32320dc1b2f980f1e70cf026e3b0af77f65a1e",
+              "model": "gpt-4.1",
+              "supported": false,
+              "reason": "The cited source only evaluates SCIGYM-small (137 tasks), not large (213 tasks); citing text implies usage of both splits, which the passage does not support."
+            }
+          ]
         },
         {
           "id": "s1.p3",
           "node_type": "setup",
-          "quote": "The agent may submit its final model and conclude the discovery process at any point, subject to a maximum iteration limit (20 in our benchmark)."
+          "quote": "The agent may submit its final model and conclude the discovery process at any point, subject to a maximum iteration limit (20 in our benchmark).",
+          "judgments": [
+            {
+              "text_sha256": "359ab651e6ea252d8f13c1c6989ab8896514599c3b00502a9e8f23be6da39823",
+              "model": "gpt-4.1",
+              "supported": true
+            },
+            {
+              "text_sha256": "b148018bb508d224f3097fb62a1f612854785bbc1bdf2828c3d1aee21bc5e9c8",
+              "model": "gpt-4.1",
+              "supported": true
+            }
+          ]
         },
         {
           "id": "s1.p4",
           "node_type": "setup",
-          "quote": "If the submitted model is invalid or cannot be simulated, we allow for 3 additional debugging iterations before evaluating against the incomplete SBML structure."
+          "quote": "If the submitted model is invalid or cannot be simulated, we allow for 3 additional debugging iterations before evaluating against the incomplete SBML structure.",
+          "judgments": [
+            {
+              "text_sha256": "b148018bb508d224f3097fb62a1f612854785bbc1bdf2828c3d1aee21bc5e9c8",
+              "model": "gpt-4.1",
+              "supported": true
+            },
+            {
+              "text_sha256": "ea6372b632f0f27f1560848bb197ae29174858a89d3a1ed0e2394be564a35b9b",
+              "model": "gpt-4.1",
+              "supported": true
+            }
+          ]
         },
         {
           "id": "s1.p5",
           "node_type": "result",
-          "quote": "Gemini-2.5-Flash 0.4181 0.1527 0.1071 0.1217 0.2399 0.1839 0.2005 GPT-4.1-mini 0.6007 0.1516 0.1253 0.1320 0.2530 0.2313 0.2322 Claude-3.5-Haiku 0.6281 0.0858 0.0421 0.0530 0.1454 0.0805 0.0987 Gemini-2.5-Pro 0.3212 0.2138 0.1664 0.1817 0.3781 0.3219 0.3383 GPT-4.1 0.4611 0.2067 0.1597 0.1740 0.3517 0.2888 0.3038 Claude-3.7-Sonnet 0.3615 0.1780 0.1698 0.1688 0.3160 0.3170 0.3047"
+          "quote": "Gemini-2.5-Flash 0.4181 0.1527 0.1071 0.1217 0.2399 0.1839 0.2005 GPT-4.1-mini 0.6007 0.1516 0.1253 0.1320 0.2530 0.2313 0.2322 Claude-3.5-Haiku 0.6281 0.0858 0.0421 0.0530 0.1454 0.0805 0.0987 Gemini-2.5-Pro 0.3212 0.2138 0.1664 0.1817 0.3781 0.3219 0.3383 GPT-4.1 0.4611 0.2067 0.1597 0.1740 0.3517 0.2888 0.3038 Claude-3.7-Sonnet 0.3615 0.1780 0.1698 0.1688 0.3160 0.3170 0.3047",
+          "judgments": [
+            {
+              "text_sha256": "2d62ab56bb63f36450230042df51fced7e47b92516fb82233977042f44d826bc",
+              "model": "gpt-4.1",
+              "supported": true
+            },
+            {
+              "text_sha256": "c312b737da7bad15aaabfba67f0dd0cefaebb7dd7fb23ef1c65f39dd21012474",
+              "model": "gpt-4.1",
+              "supported": true
+            }
+          ]
         },
         {
           "id": "s1.p6",
           "node_type": "claim",
-          "quote": "Among all models evaluated, Gemini-Pro achieved the best overall performance."
+          "quote": "Among all models evaluated, Gemini-Pro achieved the best overall performance.",
+          "judgments": [
+            {
+              "text_sha256": "2d62ab56bb63f36450230042df51fced7e47b92516fb82233977042f44d826bc",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text accurately summarizes that Gemini-Pro achieved the best overall performance, which is directly stated in the passage."
+            }
+          ]
         },
         {
           "id": "s1.p7",
           "node_type": "definition",
-          "quote": "We consider two reactions \"matched\" if they have identical sets of reactants and products. In the second, more stringent version, we additionally require matching modifiers."
+          "quote": "We consider two reactions \"matched\" if they have identical sets of reactants and products. In the second, more stringent version, we additionally require matching modifiers.",
+          "judgments": [
+            {
+              "text_sha256": "2d62ab56bb63f36450230042df51fced7e47b92516fb82233977042f44d826bc",
+              "model": "gpt-4.1",
+              "supported": true
+            }
+          ]
         },
         {
           "id": "s1.p8",
           "node_type": "definition",
-          "quote": "We employ the Symmetric Mean Absolute Percentage Error (SMAPE) (Makridakis, 1993), which normalizes errors relative to magnitude."
+          "quote": "We employ the Symmetric Mean Absolute Percentage Error (SMAPE) (Makridakis, 1993), which normalizes errors relative to magnitude.",
+          "judgments": [
+            {
+              "text_sha256": "2d62ab56bb63f36450230042df51fced7e47b92516fb82233977042f44d826bc",
+              "model": "gpt-4.1",
+              "supported": true
+            }
+          ]
         },
         {
           "id": "s1.p9",
@@ -95,7 +166,14 @@
         {
           "id": "s2.p1",
           "node_type": "setup",
-          "quote": "temperature: 1.0"
+          "quote": "temperature: 1.0",
+          "judgments": [
+            {
+              "text_sha256": "ea6372b632f0f27f1560848bb197ae29174858a89d3a1ed0e2394be564a35b9b",
+              "model": "gpt-4.1",
+              "supported": true
+            }
+          ]
         },
         {
           "id": "s2.p2",
@@ -105,7 +183,14 @@
         {
           "id": "s2.p3",
           "node_type": "setup",
-          "quote": "eval_debug_rounds: 5"
+          "quote": "eval_debug_rounds: 5",
+          "judgments": [
+            {
+              "text_sha256": "ea6372b632f0f27f1560848bb197ae29174858a89d3a1ed0e2394be564a35b9b",
+              "model": "gpt-4.1",
+              "supported": true
+            }
+          ]
         }
       ]
     },
@@ -131,32 +216,80 @@
         {
           "id": "s3.p1",
           "node_type": "claim",
-          "quote": "RIKYU の推論 API（OpenAI 互換）で提供される open-weight モデル 6 種（deepseek-v4.1-flash、glm-5.2、kimi-k2.6、kimi-k3、qwen3.6-35b、qwen3.8-27b）は、SciGym 公開コードの Controller をそのまま用いて SciGym-small 137 件を最大 20 反復で解かせたとき、いずれも平均 Simulation Trajectory Error（STE）が論文 Table 1 の GPT-4.1-mini（0.6007）の水準に届く（0.05 より大きくは上回らない）。"
+          "quote": "RIKYU の推論 API（OpenAI 互換）で提供される open-weight モデル 6 種（deepseek-v4.1-flash、glm-5.2、kimi-k2.6、kimi-k3、qwen3.6-35b、qwen3.8-27b）は、SciGym 公開コードの Controller をそのまま用いて SciGym-small 137 件を最大 20 反復で解かせたとき、いずれも平均 Simulation Trajectory Error（STE）が論文 Table 1 の GPT-4.1-mini（0.6007）の水準に届く（0.05 より大きくは上回らない）。",
+          "judgments": [
+            {
+              "text_sha256": "3ca86c8222aca6b26f549757ab5202668abdce70c29b9cff320a451318302259",
+              "model": "gpt-4.1",
+              "supported": false,
+              "reason": "The citing text claims the study evaluated whether the six open-weight models reach the performance level of GPT-4.1-mini, but the source passage says that none exceeded the reference value by more than 0.05, meaning they do not reach but rather approach it; this subtle difference (not 'reach', but 'do not greatly exceed') is important."
+            }
+          ]
         },
         {
           "id": "s3.p2",
           "node_type": "result",
-          "quote": "\"trajectory_smape\": 0.21004969535683385"
+          "quote": "\"trajectory_smape\": 0.21004969535683385",
+          "judgments": [
+            {
+              "text_sha256": "11ce6289523907ed84d535f6ea0752b3b0857f848f4bd9574c8b94dd77bfe45a",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text correctly reports the value of 'trajectory_smape' (0.2100) from the quoted passage, and does not overstate or misrepresent the context in which this value appears."
+            }
+          ]
         },
         {
           "id": "s3.p3",
           "node_type": "result",
-          "quote": "\"trajectory_smape\": 0.22507247610652192"
+          "quote": "\"trajectory_smape\": 0.22507247610652192",
+          "judgments": [
+            {
+              "text_sha256": "11ce6289523907ed84d535f6ea0752b3b0857f848f4bd9574c8b94dd77bfe45a",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text faithfully reports the value of 0.2251 (rounded from 0.225072...) for kimi-k3 from the quoted passage, without generalization or added context beyond the number reported."
+            }
+          ]
         },
         {
           "id": "s3.p4",
           "node_type": "result",
-          "quote": "\"trajectory_smape\": 0.24046025032909796"
+          "quote": "\"trajectory_smape\": 0.24046025032909796",
+          "judgments": [
+            {
+              "text_sha256": "11ce6289523907ed84d535f6ea0752b3b0857f848f4bd9574c8b94dd77bfe45a",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The claimed metric value (0.2405 for deepseek-v4.1-flash) matches the quoted passage's 'trajectory_smape' value, and there is no context-dependent qualifier or condition missed in the citation."
+            }
+          ]
         },
         {
           "id": "s3.p5",
           "node_type": "result",
-          "quote": "\"trajectory_smape\": 0.24793430926739368"
+          "quote": "\"trajectory_smape\": 0.24793430926739368",
+          "judgments": [
+            {
+              "text_sha256": "11ce6289523907ed84d535f6ea0752b3b0857f848f4bd9574c8b94dd77bfe45a",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text reports the trajectory_smape value (0.2479) for qwen3.8-27b, which is precisely supported by the quoted passage and its source."
+            }
+          ]
         },
         {
           "id": "s3.p6",
           "node_type": "result",
-          "quote": "\"trajectory_smape\": 0.4570888053620998"
+          "quote": "\"trajectory_smape\": 0.4570888053620998",
+          "judgments": [
+            {
+              "text_sha256": "11ce6289523907ed84d535f6ea0752b3b0857f848f4bd9574c8b94dd77bfe45a",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text accurately reports the 'trajectory_smape' value (0.4571, rounded from 0.4570888) for qwen3.6-35b as found in the quoted passage and its source context, without overstatement or misrepresentation."
+            }
+          ]
         },
         {
           "id": "s3.p7",

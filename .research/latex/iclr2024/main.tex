@@ -29,7 +29,7 @@ SciGym \citep{duan-2025-measuring} は、反応をすべて取り除いた SBML 
 \label{sec:intro}
 LLM に科学的発見のサイクル全体（実験の設計、結果の解析、機構の提案）を行わせて測るベンチマークとして、SciGym \citep{duan-2025-measuring} が提案された。BioModels 由来の SBML モデルから反応をすべて取り除いたものをエージェントに渡し、エージェントは初期濃度を変えた摂動実験を要求し、返ってきた時系列を Python で解析し、最終的な SBML を提出する。提出は任意の時点で行え、反復数の上限は 20 である \cite[s1.p3]{duan-2025-measuring}。論文は計算資源の制約から SciGym-small の 137 件だけを評価した \cite[s1.p2]{duan-2025-measuring}。
 
-先行する AIRAS の研究は、同じ Controller と反復上限 20 で open-weight 6 モデルが論文の GPT-4.1-mini の水準に届くかを評価し \cite[s3.p1]{scigymrikyuopenmodels-2026-scigym}、kimi-k2.6 が \unverified{0.2100} \cite[s3.p2]{scigymrikyuopenmodels-2026-scigym}、kimi-k3 が \unverified{0.2251} \cite[s3.p3]{scigymrikyuopenmodels-2026-scigym}、deepseek-v4.1-flash が \unverified{0.2405} \cite[s3.p4]{scigymrikyuopenmodels-2026-scigym}、qwen3.8-27b が \unverified{0.2479} \cite[s3.p5]{scigymrikyuopenmodels-2026-scigym}、qwen3.6-35b が \unverified{0.4571} \cite[s3.p6]{scigymrikyuopenmodels-2026-scigym} であった。その実行では 137 件のうちおよそ 8 割の件が上限の 20 反復を使い切っており、反復を増やせばさらに良くなるのか、それとも飽和しているのかは分からない。また large split の 213 件は論文でも先行研究でも評価されていない。
+先行する AIRAS の研究は、同じ Controller と反復上限 20 で open-weight 6 モデルの平均 STE が論文の GPT-4.1-mini の 0.6007 を 0.05 より大きくは上回らないかを評価し \cite[s3.p1]{scigymrikyuopenmodels-2026-scigym}、kimi-k2.6 が \unverified{0.2100} \cite[s3.p2]{scigymrikyuopenmodels-2026-scigym}、kimi-k3 が \unverified{0.2251} \cite[s3.p3]{scigymrikyuopenmodels-2026-scigym}、deepseek-v4.1-flash が \unverified{0.2405} \cite[s3.p4]{scigymrikyuopenmodels-2026-scigym}、qwen3.8-27b が \unverified{0.2479} \cite[s3.p5]{scigymrikyuopenmodels-2026-scigym}、qwen3.6-35b が \unverified{0.4571} \cite[s3.p6]{scigymrikyuopenmodels-2026-scigym} であった。その実行では 137 件のうちおよそ 8 割の件が上限の 20 反復を使い切っており、反復を増やせばさらに良くなるのか、それとも飽和しているのかは分からない。また large split の 213 件は論文でも先行研究でも評価されていない。
 
 本研究はこの 2 点を、同じ 5 モデル、同じ Controller、反復上限 100 で問う。判定は AIRAS の事前登録の枠組みに従い、仮説・判定基準・予測区間・実行条件を実験前に記録へ凍結し、実験後は計測値だけを流し込む。
 
@@ -67,7 +67,7 @@ RMS（modifier あり / なし）と NTS、提出までの反復数、上限前�
 RIKYU の推論 API が提供する open-weight モデルのうち、先行研究で 20 反復の full run が完走した 5 モデルを用いる: kimi-k2.6、kimi-k3、deepseek-v4.1-flash、qwen3.8-27b、qwen3.6-35b。いずれも思考（thinking）を出力するモデルである。文脈長は qwen 2 種と kimi-k2.6 が 262144、deepseek-v4.1-flash が 1000000、kimi-k3 が 928000 トークンで、5 モデル共通の上限 262144 を設計の基準にする。GLM 系は先行研究で生成速度が遅く期限内に終わらなかったため除く。
 
 \paragraph{データ.}
-SciGym の公式リリース（Hugging Face \texttt{h4duan/scigym-sbml}）の small split 137 件 \cite[s1.p2]{duan-2025-measuring} と large split 213 件（RIKYU 上のコピー）を用いる。large の真のモデルの SBML は small のおよそ 3.5 倍長い。評価層は各件の内容を公式リリースの sha256 と照合する。
+SciGym の公式リリース（Hugging Face \texttt{h4duan/scigym-sbml}）のうち、論文が評価対象とした small split 137 件 \cite[s1.p2]{duan-2025-measuring} に加え、論文では評価されていない large split 213 件を用いる（いずれも RIKYU 上のコピー）。large の真のモデルの SBML は small のおよそ 3.5 倍長い。評価層は各件の内容を公式リリースの sha256 と照合する。
 
 \paragraph{反復上限.}
 \texttt{max\_iterations} は 100 とする。当初は 200 を検討したが、先行研究の 20 反復の会話は 1 反復あたり中央値 0.85k、90 パーセンタイル 1.3k トークン伸びており、出力用に 32768 を確保した入力の上限約 230k トークンでは、200 反復だと large で 90 パーセンタイルの件が文脈長を超える見込みだった。また 1 モデル 1 run で small か large の全件を回すと、計算機の 1 job 4 日の上限に対して 200 反復は収まらない。この 2 つの理由で small / large 共通の上限を 100 に下げた。100 でも一部の件は文脈長を超えうるので、その件数を表で報告する。

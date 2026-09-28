@@ -46,6 +46,11 @@
               "model": "gpt-4.1",
               "supported": false,
               "reason": "The cited source only evaluates SCIGYM-small (137 tasks), not large (213 tasks); citing text implies usage of both splits, which the passage does not support."
+            },
+            {
+              "text_sha256": "08fc1b681b300e58d8fd9f0a52309060bdc411f75d9201f5fc9addb927537057",
+              "model": "gpt-4.1",
+              "supported": true
             }
           ]
         },
@@ -223,6 +228,11 @@
               "model": "gpt-4.1",
               "supported": false,
               "reason": "The citing text claims the study evaluated whether the six open-weight models reach the performance level of GPT-4.1-mini, but the source passage says that none exceeded the reference value by more than 0.05, meaning they do not reach but rather approach it; this subtle difference (not 'reach', but 'do not greatly exceed') is important."
+            },
+            {
+              "text_sha256": "18e5043b5e5d6d9b4e133e9a325074a8693c383363f5d9b35c378e003c4a03b1",
+              "model": "gpt-4.1",
+              "supported": true
             }
           ]
         },
@@ -236,6 +246,12 @@
               "model": "gpt-4.1",
               "supported": true,
               "reason": "The citing text correctly reports the value of 'trajectory_smape' (0.2100) from the quoted passage, and does not overstate or misrepresent the context in which this value appears."
+            },
+            {
+              "text_sha256": "a9d5f3d6f60b18eb9496bf4b56bf43bf0468df4169e1746c941fd7e731078731",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text faithfully reports the value of 'trajectory_smape' as 0.2100 for kimi-k2.6, which matches the value in the quoted passage."
             }
           ]
         },
@@ -249,6 +265,11 @@
               "model": "gpt-4.1",
               "supported": true,
               "reason": "The citing text faithfully reports the value of 0.2251 (rounded from 0.225072...) for kimi-k3 from the quoted passage, without generalization or added context beyond the number reported."
+            },
+            {
+              "text_sha256": "a9d5f3d6f60b18eb9496bf4b56bf43bf0468df4169e1746c941fd7e731078731",
+              "model": "gpt-4.1",
+              "supported": true
             }
           ]
         },
@@ -262,6 +283,12 @@
               "model": "gpt-4.1",
               "supported": true,
               "reason": "The claimed metric value (0.2405 for deepseek-v4.1-flash) matches the quoted passage's 'trajectory_smape' value, and there is no context-dependent qualifier or condition missed in the citation."
+            },
+            {
+              "text_sha256": "a9d5f3d6f60b18eb9496bf4b56bf43bf0468df4169e1746c941fd7e731078731",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text faithfully reports the value for trajectory_smape (0.2405) for deepseek-v4.1-flash from the quoted passage, and it properly attributes the result to the cited source without adding unstated conditions or generalizations."
             }
           ]
         },
@@ -275,6 +302,12 @@
               "model": "gpt-4.1",
               "supported": true,
               "reason": "The citing text reports the trajectory_smape value (0.2479) for qwen3.8-27b, which is precisely supported by the quoted passage and its source."
+            },
+            {
+              "text_sha256": "a9d5f3d6f60b18eb9496bf4b56bf43bf0468df4169e1746c941fd7e731078731",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text faithfully reports the value of 0.2479 for trajectory_smape for qwen3.8-27b, matching the quoted passage and its context."
             }
           ]
         },
@@ -288,6 +321,12 @@
               "model": "gpt-4.1",
               "supported": true,
               "reason": "The citing text accurately reports the 'trajectory_smape' value (0.4571, rounded from 0.4570888) for qwen3.6-35b as found in the quoted passage and its source context, without overstatement or misrepresentation."
+            },
+            {
+              "text_sha256": "381788d5bd1db3b8327d49842bf7f6130b86b8c4f370789c59f542806af938d3",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text correctly reports the value 0.4571 (rounded from 0.4570888053620998) for qwen3.6-35b, labeled as trajectory_smape in the source."
             }
           ]
         },

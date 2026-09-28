@@ -10,3 +10,4 @@ max_tokens: 32768
 workers: 48  # API はバッチ処理で 1 要求あたりの速度が落ちないので、100 反復を 4 日に収めるために上げる
 instance_timeout: 129600  # 1 件 1 試行の上限秒（36 時間）。100 反復は 20 反復の 5 倍かかる
 stall_timeout: 5400  # 出力が止まってからこの秒数で試行を打ち切る（ODE の C ライブラリ内で止まった件）
+resume_root: /data1/rkp00041/rku00122/resume  # 打ち切った run の完了済みの件（checkpoints/*.tar.gz）を run_id ごとに置く

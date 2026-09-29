@@ -340,6 +340,12 @@
               "model": "gpt-4.1",
               "supported": false,
               "reason": "The quoted passage only describes the setting for running 137 SciGym-small cases with 20 iterations and does not mention run times, parallelization, stopping due to C library issues, or context overflow problems that are discussed in the citing text."
+            },
+            {
+              "text_sha256": "330c64d1d6562e941878db4cd5a128472c16ccd2943e0544765c3f55c07cc34c",
+              "model": "gpt-4.1",
+              "supported": false,
+              "reason": "The cited passage describes the settings of a prior experiment (20 iteration cap), but does not provide the timing data ('1 run took 9-20 hours'), nor does it allow direct inference of time per run or the comparative effect of raising iterations to 100, as claimed in the citing text."
             }
           ]
         }

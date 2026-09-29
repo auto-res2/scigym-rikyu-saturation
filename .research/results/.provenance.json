@@ -1,0 +1,22 @@
+{
+  "dirs": {
+    "kimi-k3-small": {
+      "execution_id": "5ccfd912-4664-466d-9ec3-bec60724d084",
+      "backend": "seyval",
+      "commit_hash": "3c8f873f7e8924ed33f7f21a254a854c55531985",
+      "overrides": {
+        "run_id": "kimi-k3-small",
+        "mode": "full",
+        "airas_eval_tasks": "scigym_small"
+      },
+      "parameters": {},
+      "files": {
+        ".research/results/kimi-k3-small/eval_inputs/scigym_small.json.gz": "8d55320465c4346c8093b4d153c95445ae7953de1442d85cb682412aa0a2399f",
+        ".research/results/kimi-k3-small/evaluation/scigym_small.json": "3cd9e3cafb18dacec678e094fe4704ef56306c9948529e4db97e3028a4b28f7f",
+        ".research/results/kimi-k3-small/instances.tar.gz": "e3a0d8bb99dce393d892f9a882c3a16db04a8925dce661642c236f185d4908d9",
+        ".research/results/kimi-k3-small/metrics.json": "ddab7ccffe810032c8067603b6137cb24ff3417f18333a610d69061daa7a56c5",
+        ".research/results/kimi-k3-small/tokens.json": "13a84aae5086e8ed598954ee77f51e43cb1f417dd0c5cacb1b7aa3e01fc6f6c0"
+      }
+    }
+  }
+}

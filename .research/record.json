@@ -333,7 +333,15 @@
         {
           "id": "s3.p7",
           "node_type": "setup",
-          "quote": "公式 Controller（max_iterations=20、eval_debug_rounds=3、temperature=1.0、max_tokens=32768、摂動は初期濃度変更のみ）で SciGym-small 137 件を 1 件 1 プロセスで解かせ、提出モデルと公式データを評価層 scigym_small（公式 Evaluator）で採点する。"
+          "quote": "公式 Controller（max_iterations=20、eval_debug_rounds=3、temperature=1.0、max_tokens=32768、摂動は初期濃度変更のみ）で SciGym-small 137 件を 1 件 1 プロセスで解かせ、提出モデルと公式データを評価層 scigym_small（公式 Evaluator）で採点する。",
+          "judgments": [
+            {
+              "text_sha256": "30860032638bd45d21b8b25a12db32fe5028a30344d97492723d442f719055de",
+              "model": "gpt-4.1",
+              "supported": false,
+              "reason": "The quoted passage only describes the setting for running 137 SciGym-small cases with 20 iterations and does not mention run times, parallelization, stopping due to C library issues, or context overflow problems that are discussed in the citing text."
+            }
+          ]
         }
       ]
     }

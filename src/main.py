@@ -49,7 +49,8 @@ def run_instance(cfg, run_dir, instance):
             time.sleep(30)
             # LLM のコードや提出モデルの評価が ODE の C ライブラリ内で止まると公式の 3 分制限（SIGALRM）が効かない。
             # Controller は反復ごとに出力するので、出力が止まったままの試行は打ち切って最初からやり直す
-            silent = time.time() - log_path.stat().st_mtime
+            # 再試行は前の試行が終わって何時間も後に始まるので、基準は前試行の最終出力ではなく今回の開始時刻
+            silent = time.time() - max(log_path.stat().st_mtime, started)
             if time.time() - started > cfg.instance_timeout or silent > cfg.stall_timeout:
                 proc.kill()
                 proc.wait()

@@ -62,6 +62,10 @@ class OpenAICompatible(LLM):
                 if exc.status_code == 400 and any(w in str(exc).lower() for w in ("context", "maximum", "too long", "max_tokens")):
                     print(f"context overflow after {len(self.messages)} messages: {exc}", flush=True)
                     sys.exit(CONTEXT_OVERFLOW)
+                if exc.status_code == 429 and attempt < MAX_RETRIES - 1:  # 鍵の同時要求数の上限（throttling）。空くまで待つ
+                    print(f"rate limited (429); retry {attempt + 1} after 60s", flush=True)
+                    time.sleep(60)
+                    continue
                 if exc.status_code < 500 or attempt == MAX_RETRIES - 1:
                     raise
                 print(f"gateway {exc.status_code}; retry {attempt + 1} after 60s", flush=True)  # 上流の一時的な不調は待って呼び直す

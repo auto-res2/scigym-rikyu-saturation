@@ -1168,6 +1168,117 @@
               "label": "qwen3.6-35b large"
             }
           ]
+        },
+        {
+          "key": "large",
+          "caption": "SciGym-large 213 件、最大 100 反復。平均 STE（低いほど良い）、論文 Table 1 の最良行（Gemini-2.5-Pro、0.3212）との差、RMS の F1（modifier なし / あり）、有効な提出件数、提出までの平均反復数、上限前に自ら提出した件数、文脈超過で終わった件数。第 2 版: 結果のある 2 run。kimi-k3 の large は job のメモリ超過で採点前に終了し、kimi-k2.6 と qwen3.8-27b は鍵の制限で実行できなかった。",
+          "columns": [
+            {
+              "header": "STE $\\downarrow$",
+              "ref_path": "trajectory_smape",
+              "round": 3
+            },
+            {
+              "header": "$\\Delta$ vs Gemini-2.5-Pro",
+              "ref_path": "trajectory_smape",
+              "reference": {
+                "passage": "s1.p5",
+                "values": {
+                  "deepseek-v4.1-flash-large": 0.3212,
+                  "qwen3.6-35b-large": 0.3212
+                }
+              },
+              "round": 3
+            },
+            {
+              "header": "F1",
+              "ref_path": "reaction_f1",
+              "round": 3
+            },
+            {
+              "header": "F1$_m$",
+              "ref_path": "reaction_f1_with_modifiers",
+              "round": 3
+            },
+            {
+              "header": "n\\_valid",
+              "ref_path": "n_valid_submissions",
+              "round": 0
+            },
+            {
+              "header": "平均反復",
+              "ref_path": "mean_iterations",
+              "round": 1
+            },
+            {
+              "header": "早期提出",
+              "ref_path": "n_early_submit",
+              "round": 0
+            },
+            {
+              "header": "文脈超過",
+              "ref_path": "n_context_overflow",
+              "round": 0
+            }
+          ],
+          "rows": [
+            {
+              "run_id": "deepseek-v4.1-flash-large",
+              "label": "deepseek-v4.1-flash"
+            },
+            {
+              "run_id": "qwen3.6-35b-large",
+              "label": "qwen3.6-35b"
+            }
+          ]
+        },
+        {
+          "key": "tokens",
+          "caption": "各 run の評価件数、有効な SBML が提出された件数、トークン消費。出力トークンには thinking を含む。第 2 版: 結果のある 5 run。",
+          "columns": [
+            {
+              "header": "n\\_instances",
+              "ref_path": "n_instances",
+              "round": 0
+            },
+            {
+              "header": "n\\_valid\\_submissions",
+              "ref_path": "n_valid_submissions",
+              "round": 0
+            },
+            {
+              "header": "入力トークン",
+              "ref_path": "input_tokens",
+              "round": 0
+            },
+            {
+              "header": "出力トークン",
+              "ref_path": "output_tokens",
+              "round": 0
+            }
+          ],
+          "rows": [
+            {
+              "run_id": "kimi-k3-small",
+              "label": "kimi-k3 small"
+            },
+            {
+              "run_id": "deepseek-v4.1-flash-small",
+              "label": "deepseek-v4.1-flash small"
+            },
+            {
+              "run_id": "qwen3.6-35b-small",
+              "label": "qwen3.6-35b small"
+            },
+            {
+              "run_id": "deepseek-v4.1-flash-large",
+              "label": "deepseek-v4.1-flash large"
+            },
+            {
+              "run_id": "qwen3.6-35b-large",
+              "label": "qwen3.6-35b large"
+            }
+          ]
         }
       ],
       "notes": [

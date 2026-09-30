@@ -14,13 +14,13 @@
   \emph{Criterion:} \texttt{\detokenize{kimi-k3-small}}.\texttt{\detokenize{trajectory_smape}} $-$ 0.225072 $\leq 0$.
   \emph{Prediction:} $[-0.08, 0.02]$ (c1 と同じ).
   \emph{Observed:} -0.136895.
-  \emph{Verdict:} pending.
+  \emph{Verdict:} supported.
 \item[\textbf{Claim 3}] deepseek-v4.1-flash で SciGym-small 137 件を最大 100 反復で解かせたときの平均 STE は、先行研究の 20 反復の値 0.2405 以下である。~\cite[s1.p3, s1.p4]{duan-2025-measuring}, \cite[s3.p4, s3.p7]{scigymrikyuopenmodels-2026-scigym}, \cite[s2.p1]{h4duan-2025-scigym}
   \emph{Rationale:} c1 と同じ。h1 の deepseek-v4.1-flash の部分を担う。
   \emph{Criterion:} \texttt{\detokenize{deepseek-v4.1-flash-small}}.\texttt{\detokenize{trajectory_smape}} $-$ 0.24046 $\leq 0$.
   \emph{Prediction:} $[-0.08, 0.02]$ (c1 と同じ).
   \emph{Observed:} -0.0198195.
-  \emph{Verdict:} pending.
+  \emph{Verdict:} supported.
 \item[\textbf{Claim 4}] qwen3.8-27b で SciGym-small 137 件を最大 100 反復で解かせたときの平均 STE は、先行研究の 20 反復の値 0.2479 以下である。~\cite[s1.p3, s1.p4]{duan-2025-measuring}, \cite[s3.p5, s3.p7]{scigymrikyuopenmodels-2026-scigym}, \cite[s2.p1]{h4duan-2025-scigym}
   \emph{Rationale:} c1 と同じ。h1 の qwen3.8-27b の部分を担う。
   \emph{Criterion:} \texttt{\detokenize{qwen3.8-27b-small}}.\texttt{\detokenize{trajectory_smape}} $-$ 0.247934 $\leq 0$.
@@ -32,7 +32,7 @@
   \emph{Criterion:} \texttt{\detokenize{qwen3.6-35b-small}}.\texttt{\detokenize{trajectory_smape}} $-$ 0.457089 $\leq 0$.
   \emph{Prediction:} $[-0.15, 0.02]$ (20 反復での値が他の 4 モデルより高く、反復を増やす余地が大きいと見る).
   \emph{Observed:} -0.0115344.
-  \emph{Verdict:} pending.
+  \emph{Verdict:} supported.
 \end{enumerate}
 \noindent\emph{Assumed, so that the claims together imply Hypothesis 1:}
 \begin{itemize}
@@ -62,7 +62,7 @@
   \emph{Criterion:} \texttt{\detokenize{deepseek-v4.1-flash-large}}.\texttt{\detokenize{trajectory_smape}} $-$ 0.3212 $\leq 0$.
   \emph{Prediction:} $[-0.1, 0.1]$ (c6 と同じ（small での値は 0.2405、s3.p4）).
   \emph{Observed:} 0.0339638.
-  \emph{Verdict:} pending.
+  \emph{Verdict:} refuted.
 \item[\textbf{Claim 9}] qwen3.8-27b で SciGym-large 213 件を最大 100 反復で解かせたときの平均 STE は、論文 Table 1 の最良行（Gemini-2.5-Pro）の 0.3212 以下である。~\cite[s1.p2, s1.p3, s1.p4, s1.p5]{duan-2025-measuring}, \cite[s3.p5]{scigymrikyuopenmodels-2026-scigym}, \cite[s2.p1]{h4duan-2025-scigym}
   \emph{Rationale:} c6 と同じ。h2 の qwen3.8-27b の部分を担う。
   \emph{Criterion:} \texttt{\detokenize{qwen3.8-27b-large}}.\texttt{\detokenize{trajectory_smape}} $-$ 0.3212 $\leq 0$.
@@ -74,7 +74,7 @@
   \emph{Criterion:} \texttt{\detokenize{qwen3.6-35b-large}}.\texttt{\detokenize{trajectory_smape}} $-$ 0.3212 $\leq 0$.
   \emph{Prediction:} $[0, 0.25]$ (small での 0.4571（s3.p6）が基準を 0.14 上回っていた。反証されると予測する).
   \emph{Observed:} 0.1954.
-  \emph{Verdict:} pending.
+  \emph{Verdict:} refuted.
 \end{enumerate}
 \noindent\emph{Assumed, so that the claims together imply Hypothesis 2:}
 \begin{itemize}

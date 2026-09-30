@@ -244,6 +244,11 @@
               "text_sha256": "18e5043b5e5d6d9b4e133e9a325074a8693c383363f5d9b35c378e003c4a03b1",
               "model": "gpt-4.1",
               "supported": true
+            },
+            {
+              "text_sha256": "d38f031b0c89a4d8c9af48fd5c8506ee17a41b1c6861b15b6e4e1f165b9fabf7",
+              "model": "gpt-4.1",
+              "supported": true
             }
           ]
         },
@@ -293,6 +298,12 @@
               "model": "gpt-4.1",
               "supported": false,
               "reason": "The citing text interprets the passage (trajectory_smape=0.2251) as giving the STE after 20 iterations for kimi-k3, but the quoted passage only gives a metric value without specifying that it corresponds to 20 iterations, to kimi-k3 specifically, or to the context described (e.g., self-stopping at 20 iterations); thus, essential contextual qualifiers are missing or unsupported by the citation."
+            },
+            {
+              "text_sha256": "d38f031b0c89a4d8c9af48fd5c8506ee17a41b1c6861b15b6e4e1f165b9fabf7",
+              "model": "gpt-4.1",
+              "supported": false,
+              "reason": "The citing text attributes the value 0.2251 (trajectory_smape) as the performance for kimi-k3 evaluated at 20 iterations as in previous research, but the quoted passage provides only the value itself with no contextual information about the number of iterations or experimental conditions, so the statement is unsubstantiated by the passage alone."
             }
           ]
         },

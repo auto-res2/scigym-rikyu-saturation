@@ -688,6 +688,61 @@
               "label": "qwen3.6-35b"
             }
           ]
+        },
+        {
+          "key": "small",
+          "caption": "SciGym-small 137 件、最大 100 反復。平均 STE（低いほど良い）、RMS の F1（modifier なし / あり）、有効な提出件数、提出までの平均反復数、上限前に自ら提出した件数、文脈超過で終わった件数。先行研究の 20 反復の値は本文の対比表で並べる。第 2 版: 完了した 3 run。kimi-k2.6 と qwen3.8-27b は推論 API の鍵の同時要求数制限で実行できず除外した。",
+          "columns": [
+            {
+              "header": "STE $\\downarrow$",
+              "ref_path": "trajectory_smape",
+              "round": 3
+            },
+            {
+              "header": "F1",
+              "ref_path": "reaction_f1",
+              "round": 3
+            },
+            {
+              "header": "F1$_m$",
+              "ref_path": "reaction_f1_with_modifiers",
+              "round": 3
+            },
+            {
+              "header": "n\\_valid",
+              "ref_path": "n_valid_submissions",
+              "round": 0
+            },
+            {
+              "header": "平均反復",
+              "ref_path": "mean_iterations",
+              "round": 1
+            },
+            {
+              "header": "早期提出",
+              "ref_path": "n_early_submit",
+              "round": 0
+            },
+            {
+              "header": "文脈超過",
+              "ref_path": "n_context_overflow",
+              "round": 0
+            }
+          ],
+          "rows": [
+            {
+              "run_id": "kimi-k3-small",
+              "label": "kimi-k3"
+            },
+            {
+              "run_id": "deepseek-v4.1-flash-small",
+              "label": "deepseek-v4.1-flash"
+            },
+            {
+              "run_id": "qwen3.6-35b-small",
+              "label": "qwen3.6-35b"
+            }
+          ]
         }
       ],
       "notes": [
@@ -696,7 +751,8 @@
         "2026-09-28: LLM のコードや提出モデルの評価が ODE ソルバーの C ライブラリ内で止まり、公式 Controller の 3 分制限（signal.alarm）が効かない件が多発した（100 反復では 1 試行の上限 36 時間まで待つ設計だった）。実行の途中で駆動部（src/main.py）に「出力が 90 分止まった試行を打ち切って反復 0 からやり直す」判定を加え（commit d0cb33d）、走っていた 10 run をすべて止め、完了済みの件を RIKYU 上の resume ディレクトリから引き継いで投げ直した（14:20 UTC）。Controller、プロンプト、モデルの呼び方、採点は変えていない。",
         "2026-09-28 15:40 UTC 頃から RIKYU の推論 API が 502 または無応答になった（deepseek-v4.1-flash を除く全モデル。17:10 UTC 頃に kimi-k3、qwen3.6-35b、deepseek は復旧、kimi-k2.6 と qwen3.8-27b は 2026-09-29 01:00 UTC 時点でも応答なし）。当時のコードは 5xx を 30 回（30 分）呼び直すと試行を落として反復を無駄にしていたため、5xx と接続断を最大 6 時間呼び直すように変え（commit 94c84fa）、10 run を再度止めて完了済みの件を引き継いで投げ直した（17:20 UTC、commit 3c8f873）。停止の原因は不明だが、10 run × 48 並列の長文脈要求が上流を落とした可能性がある。",
         "2026-09-28: 評価入力（参照 SBML + 提出 SBML）が large では 100 MB 近くになり記録への取り込み上限 50 MB を超えるため、駆動部が評価入力を gzip で書くようにし、airas-eval を v0.13.1 にした（commit 3c8f873）。",
-        "2026-09-29 01:00 UTC（執筆時点）の実行状況: 完走した run は無い。完了件数は small が kimi-k3 129/137、qwen3.6-35b 124/137、deepseek-v4.1-flash 103/137、kimi-k2.6 1/137、qwen3.8-27b 0/137、large が qwen3.6-35b 170/213、deepseek-v4.1-flash 125/213、kimi-k3 108/213、kimi-k2.6 0/213、qwen3.8-27b 0/213。文脈超過（262144 トークン）で提出に至らなかった件は qwen3.6-35b large 18、kimi-k3 large 6、qwen3.6-35b small 5、deepseek large 4。出力停止による打ち切りは deepseek large 31、deepseek small 25、kimi-k3 large 18、qwen3.6-35b large 9 など。この版の論文は主張の判定をすべて保留のまま出し、run がそろい次第、結果を追記して改版する。"
+        "2026-09-29 01:00 UTC（執筆時点）の実行状況: 完走した run は無い。完了件数は small が kimi-k3 129/137、qwen3.6-35b 124/137、deepseek-v4.1-flash 103/137、kimi-k2.6 1/137、qwen3.8-27b 0/137、large が qwen3.6-35b 170/213、deepseek-v4.1-flash 125/213、kimi-k3 108/213、kimi-k2.6 0/213、qwen3.8-27b 0/213。文脈超過（262144 トークン）で提出に至らなかった件は qwen3.6-35b large 18、kimi-k3 large 6、qwen3.6-35b small 5、deepseek large 4。出力停止による打ち切りは deepseek large 31、deepseek small 25、kimi-k3 large 18、qwen3.6-35b large 9 など。この版の論文は主張の判定をすべて保留のまま出し、run がそろい次第、結果を追記して改版する。",
+        "第 2 版（2026-09-30）: 2026-09-29 05:19 UTC 以降、RIKYU の推論 API の鍵に同時要求数 2 の制限（429 max_parallel_requests）が掛かり、kimi-k2.6 と qwen3.8-27b の 4 run は制限前にほとんど進んでいなかったため、利用者の判断でこの 2 モデルを本研究から除外した（run はキャンセル）。表 small / large / tokens は結果のある run だけで宣言し直した。deepseek-v4.1-flash の small は 33 件、large は 53 件が制限下で反復を終えられずに job が終了し、提出無し（不完全モデルの採点値）として平均に含めた。qwen3.6-35b の large は 40 件（うち文脈超過 24 件）が同じ扱いである。kimi-k3 の large は 169 件完了の時点で job がメモリ超過（Slurm OUT_OF_MEMORY）で終了し、採点に至らなかったので結果が無い。制限が解除されたら完了済みの件を引き継いで残件を実行し、同じ id で主張を append し直して判定を更新する。"
       ]
     },
     {

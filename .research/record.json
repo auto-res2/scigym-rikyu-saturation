@@ -102,6 +102,17 @@
               "text_sha256": "c312b737da7bad15aaabfba67f0dd0cefaebb7dd7fb23ef1c65f39dd21012474",
               "model": "gpt-4.1",
               "supported": true
+            },
+            {
+              "text_sha256": "7cf6cae5e79dba5ed16a28e17669db310af4fe790545f05a9d71ffaf6b0d31ca",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text notes that Table 1 of the cited paper reports the best Gemini-2.5-Pro value (0.3212), which matches precisely the value excerpted from the quoted passage; the attribution is faithful and accurate."
+            },
+            {
+              "text_sha256": "4df19ec8273cc9ee48186a6deed5d5b74255a53f171ebe31a45cab862d60e082",
+              "model": "gpt-4.1",
+              "supported": true
             }
           ]
         },
@@ -270,6 +281,18 @@
               "text_sha256": "a9d5f3d6f60b18eb9496bf4b56bf43bf0468df4169e1746c941fd7e731078731",
               "model": "gpt-4.1",
               "supported": true
+            },
+            {
+              "text_sha256": "eedcbb6ebc2a676a89cf9e26b284c6a36104f78d13c375ef28cc6d3b2dbd4cf1",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text accurately reports the quoted passage's 'trajectory_smape' value of 0.2251 for kimi-k3 on 20 iterations as 0.2251, which matches the passage's value (rounded) and does not overstate, generalize, or misrepresent the information."
+            },
+            {
+              "text_sha256": "78671f0ce37ca6bdf2f6865f1e43d30c7a349ef7c6f50cedf0708f38d3f11f93",
+              "model": "gpt-4.1",
+              "supported": false,
+              "reason": "The citing text interprets the passage (trajectory_smape=0.2251) as giving the STE after 20 iterations for kimi-k3, but the quoted passage only gives a metric value without specifying that it corresponds to 20 iterations, to kimi-k3 specifically, or to the context described (e.g., self-stopping at 20 iterations); thus, essential contextual qualifiers are missing or unsupported by the citation."
             }
           ]
         },
@@ -289,6 +312,12 @@
               "model": "gpt-4.1",
               "supported": true,
               "reason": "The citing text faithfully reports the value for trajectory_smape (0.2405) for deepseek-v4.1-flash from the quoted passage, and it properly attributes the result to the cited source without adding unstated conditions or generalizations."
+            },
+            {
+              "text_sha256": "6949821b689fd776b215927cec2c47e7ed3e8873086be96765617c764f3df173",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text quotes the 20-iteration trajectory_smape value (0.2405) accurately from the passage; its interpretation is supported."
             }
           ]
         },
@@ -327,6 +356,12 @@
               "model": "gpt-4.1",
               "supported": true,
               "reason": "The citing text correctly reports the value 0.4571 (rounded from 0.4570888053620998) for qwen3.6-35b, labeled as trajectory_smape in the source."
+            },
+            {
+              "text_sha256": "ed4e5b5247934e4b53915e3292b090ea4df39fa2578d9f2cb2956866ea5ffbfe",
+              "model": "gpt-4.1",
+              "supported": true,
+              "reason": "The citing text reports that qwen3.6-35b's trajectory_smape is 0.4571, which matches the quoted passage and its context."
             }
           ]
         },
